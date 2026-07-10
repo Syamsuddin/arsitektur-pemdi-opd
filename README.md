@@ -150,9 +150,35 @@ Dosir adalah berkas ringkas yang menyimpan status kumulatif: OPD yang sudah dipe
 
 ## Prasyarat dan Instalasi
 
-Skill ini berjalan di dalam Claude. Untuk memasangnya, unggah berkas `pemdi-arsitektur-opd.skill` melalui pengaturan skill pada akun Claude Anda. Setelah terpasang, skill akan aktif secara otomatis ketika permintaan Anda berkaitan dengan penyusunan arsitektur SPBE/Pemdi.
+Skill ini dapat dipasang dengan dua cara: mengunggah berkas `.skill` melalui Claude.ai/Claude Desktop, atau menarik langsung repositori GitHub ke `~/.claude/skills/` untuk Claude Code (CLI). Kedua cara menghasilkan skill yang sama; pilih sesuai antarmuka Claude yang Anda pakai.
+
+### Cara 1 — Claude.ai / Claude Desktop (berkas `.skill`)
+
+Unggah berkas `pemdi-arsitektur-opd.skill` melalui pengaturan skill pada akun Claude Anda. Setelah terpasang, skill akan aktif secara otomatis ketika permintaan Anda berkaitan dengan penyusunan arsitektur SPBE/Pemdi.
 
 Ketersediaan menu pemasangan skill dapat berbeda menurut jenis paket akun. Jika menu tidak muncul, fitur mungkin perlu diaktifkan lebih dulu oleh admin workspace Anda.
+
+### Cara 2 — Claude Code (CLI), langsung dari GitHub
+
+Untuk memasang skill ini di Claude Code lengkap dengan seluruh berkas referensi, `clone` repositori GitHub lalu salin isinya ke direktori skill milik Claude Code:
+
+```bash
+# 1. Clone repositori ke lokasi sementara
+git clone https://github.com/Syamsuddin/arsitektur-pemdi-opd.git /tmp/arsitektur-pemdi-opd
+
+# 2. Buat direktori skill tujuan (jika belum ada)
+mkdir -p ~/.claude/skills/pemdi-arsitektur-opd
+
+# 3. Salin seluruh berkas (SKILL.md, README.md, references/, assets/), kecuali metadata git
+rsync -a --exclude='.git' --exclude='.DS_Store' /tmp/arsitektur-pemdi-opd/ ~/.claude/skills/pemdi-arsitektur-opd/
+
+# 4. Bersihkan berkas sementara
+rm -rf /tmp/arsitektur-pemdi-opd
+```
+
+Setelah langkah di atas, direktori `~/.claude/skills/pemdi-arsitektur-opd/` akan berisi `SKILL.md`, `CLAUDE.md`, `README.md`, `LICENSE`, seluruh sembilan berkas di `references/`, dan `assets/` (termasuk `dosir-template.json`). Claude Code membaca frontmatter `name: pemdi-arsitektur-opd` pada `SKILL.md` untuk mendaftarkan skill ini secara otomatis pada sesi berikutnya — tidak perlu konfigurasi tambahan.
+
+Untuk memperbarui ke versi terbaru di kemudian hari, ulangi keempat langkah tersebut; isi direktori skill akan ditimpa dengan versi terbaru dari GitHub.
 
 ## Cara Penggunaan
 
