@@ -1,6 +1,6 @@
 # pemdi-arsitektur-opd
 
-![Arsitektur Pemdi](assets/arsitektur-pemdi-banner.png)
+![Arsitektur Pemdi](assets/banner-skill.jpg)
 
 **Skill Claude untuk menyusun Arsitektur SPBE/Pemdi tingkat Perangkat Daerah (OPD), universal untuk seluruh kabupaten/kota di Indonesia.**
 
