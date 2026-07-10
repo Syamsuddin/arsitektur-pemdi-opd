@@ -1,0 +1,87 @@
+{
+  "_petunjuk": "Ini adalah TEMPLATE Dosir ringkas. Saat memulai Pemda baru, salin struktur ini ke dosir.json (di working directory), kosongkan array-nya kecuali kerangka_regulasi (statis nasional). Dosir HARUS ringkas: hanya status lintas-OPD (opd_terpetakan, titik_integrasi), fakta tervalidasi, isi terbuka, prinsip batasi digitalisasi, log koreksi, dan (jika Mode PERENCANAAN dipakai) keputusan kebijakan Pemda + status perencanaan per-OPD. JANGAN menyimpan detail 6 domain di sini — itu hidup di dokumen arsitektur masing-masing OPD. Persistensi lewat pola unggah-ulang: sajikan sebagai file di akhir sesi, pengguna unggah lagi di sesi berikutnya. Contoh isi di bawah HANYA ilustrasi format.",
+
+  "pemda": "Nama Kabupaten/Kota, Provinsi",
+
+  "kerangka_regulasi": {
+    "rujukan_domain_teknis": "Perpres 132/2022 (6 domain Arsitektur SPBE Nasional)",
+    "rujukan_evaluasi_kematangan": "Permenpan RB 8/2026 (Indeks Pemdi, menggantikan evaluasi Permenpan 59/2020)",
+    "rujukan_urusan_konkuren": "UU 23/2014 jo. UU 9/2015 (Pemerintahan Daerah)",
+    "reformasi_sotk_lokal": "[ISI: catat di sini kalau Pemda ini punya reformasi SOTK sendiri, mis. Perbup omnibus lama dicabut diganti Perbup individual per-OPD, beserta nomor dan tahunnya]"
+  },
+
+  "opd_terpetakan": [
+    {
+      "tipe_generik": "Dinas Pendidikan",
+      "nama_lokal": "Dinas Pendidikan dan Kebudayaan",
+      "urusan_konkuren": ["Pendidikan", "Kebudayaan"],
+      "status_pemetaan": "6 domain selesai",
+      "dasar_hukum": "TERVALIDASI: Perbup Nomor .../... — atau — [ISI: model generik, Perbup belum ditemukan]",
+      "dokumen": "Arsitektur_SPBE_[nama].md",
+      "terakhir_diperbarui": "YYYY-MM-DD"
+    }
+  ],
+
+  "titik_integrasi": [
+    {
+      "id": 1,
+      "pasangan": ["Dinas Pendidikan", "BKPSDM"],
+      "pola_rujukan": "Data ASN Guru terduplikasi (lihat pola-integrasi-pasangan.md)",
+      "deskripsi_spesifik_pemda": "[ISI: detail konkret ditemukan di Pemda ini]",
+      "status": "diprediksi | dikonfirmasi"
+    }
+  ],
+
+  "fakta_tervalidasi": [
+    {
+      "fakta": "[ISI: mis. nama sistem, Perbup, status BLUD, dst yang sudah dicek ke sumber primer]",
+      "sumber": "[ISI: URL/dokumen sumber]",
+      "relevan_untuk": ["[ISI: OPD/dokumen mana yang terdampak]"]
+    }
+  ],
+
+  "isi_terbuka": [
+    {
+      "item": "[ISI: klaim/asumsi yang masih menunggu verifikasi]",
+      "muncul_di_dokumen": "[ISI: nama dokumen]",
+      "prioritas": "tinggi | sedang | rendah"
+    }
+  ],
+
+  "prinsip_batasi_digitalisasi": [
+    {
+      "opd_atau_kategori_data": "[ISI: mis. Kesbangpol - Data Kewaspadaan Dini]",
+      "alasan": "[ISI: alasan spesifik, bukan cuma 'sensitif']"
+    }
+  ],
+
+  "koreksi_metodologis_log": [
+    {
+      "tanggal": "YYYY-MM-DD",
+      "klaim_lama": "[ISI: apa yang sebelumnya dianggap benar]",
+      "klaim_baru": "[ISI: koreksinya]",
+      "dipicu_oleh": "[ISI: OPD baru dipetakan / pertanyaan pengguna / verifikasi regulasi asli / dst]",
+      "dokumen_terdampak": ["[ISI: daftar dokumen yang perlu direvisi]"]
+    }
+  ],
+
+  "keputusan_kebijakan_pemda": {
+    "_catatan": "Diisi saat Mode PERENCANAAN pertama kali dipakai. Keputusan tingkat Pemda yang berlaku untuk SEMUA OPD, ditanya SEKALI lalu diwarisi ke OPD lain (hindari pertanyaan berulang). Bedakan: jawaban final (dari pengguna) vs usulan bertanda (skill isi karena pengguna diam).",
+    "periode_perencanaan": "[ISI: mis. 2025-2029, atau tahun anggaran target]",
+    "arah_rpjmd": "[ISI: sasaran/arah RPJMD relevan, atau [USULAN CLAUDE, belum dikonfirmasi: ...]]",
+    "plafon_prioritas_anggaran_tik": "[ISI: keputusan pimpinan, atau [USULAN CLAUDE, belum dikonfirmasi: ...]]",
+    "kebijakan_satu_data": "[ISI: status/arah Satu Data Pemda, atau [ISI: belum ditetapkan]]"
+  },
+
+  "perencanaan_opd": [
+    {
+      "opd": "[ISI: nama OPD yang sudah punya To-be/Katalog Gap]",
+      "dokumen_tobe_gap": "[ISI: nama dokumen, mis. TobeGap_[nama].md]",
+      "jumlah_gap": "[ISI: berapa gap teridentifikasi]",
+      "gap_prioritas_periode_ini": ["[ISI: daftar gap yang masuk prioritas]"],
+      "gap_ditunda": ["[ISI: daftar gap yang dikeluarkan dari prioritas, TIDAK dihapus]"],
+      "isian_usulan_belum_dikonfirmasi": ["[ISI: daftar isian [USULAN CLAUDE] yang masih menunggu konfirmasi pengguna]"],
+      "terakhir_diperbarui": "YYYY-MM-DD"
+    }
+  ]
+}
