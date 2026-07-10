@@ -4,6 +4,8 @@
 
 **Skill Claude untuk menyusun Arsitektur SPBE/Pemdi tingkat Perangkat Daerah (OPD), universal untuk seluruh kabupaten/kota di Indonesia.**
 
+Selaras dengan dasar hukum terbaru — UU 23/2014 (Pemerintahan Daerah), Perpres 132/2022 (Arsitektur SPBE Nasional), dan Permenpan RB 8/2026 (Indeks Pemdi) — skill ini memetakan **6 domain arsitektur**: Proses Bisnis, Data dan Informasi, Layanan SPBE, Aplikasi SPBE, Infrastruktur SPBE, dan Keamanan SPBE. Alurnya mengikuti terminologi resmi perencanaan tata kelola: **As-is** (kondisi saat ini), **To-be** (kondisi ideal yang dituju), dan **Katalog Gap** (kesenjangan antara keduanya beserta rencana penutupnya).
+
 [![Made for Claude](https://img.shields.io/badge/Made%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.ai)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-8A63D2?logo=anthropic&logoColor=white)](https://claude.ai)
 ![Version](https://img.shields.io/badge/version-1.3.0-blue)
@@ -19,18 +21,19 @@
 
 1. [Tentang Skill Ini](#tentang-skill-ini)
 2. [Untuk Siapa](#untuk-siapa)
-3. [Apa yang Dihasilkan](#apa-yang-dihasilkan)
-4. [Fitur Utama](#fitur-utama)
-5. [Cakupan dan Batasan](#cakupan-dan-batasan)
-6. [Arsitektur Skill](#arsitektur-skill)
-7. [Prasyarat dan Instalasi](#prasyarat-dan-instalasi)
-8. [Cara Penggunaan](#cara-penggunaan)
-9. [Prinsip Desain](#prinsip-desain)
-10. [Dasar Regulasi](#dasar-regulasi)
-11. [Riwayat Versi](#riwayat-versi)
-12. [Keterbatasan yang Diketahui](#keterbatasan-yang-diketahui)
-13. [Lisensi](#lisensi)
-14. [Atribusi](#atribusi)
+3. [Konteks: Beban Kerja Nyata ASN Pemkab](#konteks-beban-kerja-nyata-asn-pemkab)
+4. [Apa yang Dihasilkan](#apa-yang-dihasilkan)
+5. [Fitur Utama](#fitur-utama)
+6. [Cakupan dan Batasan](#cakupan-dan-batasan)
+7. [Arsitektur Skill](#arsitektur-skill)
+8. [Prasyarat dan Instalasi](#prasyarat-dan-instalasi)
+9. [Cara Penggunaan](#cara-penggunaan)
+10. [Prinsip Desain](#prinsip-desain)
+11. [Dasar Regulasi](#dasar-regulasi)
+12. [Riwayat Versi](#riwayat-versi)
+13. [Keterbatasan yang Diketahui](#keterbatasan-yang-diketahui)
+14. [Lisensi](#lisensi)
+15. [Atribusi](#atribusi)
 
 ---
 
@@ -47,6 +50,19 @@ Tujuan utamanya sederhana: mempercepat penyusunan dokumen arsitektur OPD, menjag
 Skill ini ditujukan untuk praktisi transformasi digital pemerintah daerah, antara lain tim SPBE/Pemdi Diskominfo, Bagian Organisasi Setda, koordinator SPBE daerah, konsultan tata kelola pemerintahan, dan siapa saja yang bertugas menyusun atau mereviu dokumen Arsitektur SPBE tingkat OPD maupun tingkat Pemda.
 
 Skill bersifat Pemda-agnostik: tidak terikat pada satu kabupaten/kota tertentu, sehingga dapat dipakai di daerah manapun. Skill juga order-agnostic: pemetaan dapat dimulai dari OPD manapun tanpa urutan tertentu.
+
+## Konteks: Beban Kerja Nyata ASN Pemkab
+
+Di balik dokumen "Arsitektur SPBE" yang formal, ada realita meja kerja yang jarang ditulis di panduan resmi. Skill ini dirancang bukan dari ruang kelas kebijakan, tapi dari pengamatan langsung terhadap bagaimana dokumen ini benar-benar disusun di kantor kabupaten/kota.
+
+- **Tugas ini sering "menempel" pada jabatan yang bukan aslinya.** Penyusun Arsitektur SPBE/Pemdi di banyak OPD adalah staf pelaksana atau pejabat fungsional yang merangkap jadi admin/operator SPBE, bukan arsitek enterprise bersertifikat. Beban regulasi yang tebal (Perpres 132/2022, Permenpan 8/2026) harus diterjemahkan oleh orang yang latar belakangnya sering bukan TI.
+- **Tenggat datang mendadak, biasanya menjelang evaluasi.** Penyusunan sering dikebut dalam hitungan hari menjelang penilaian Indeks SPBE/Pemdi oleh Kemenpan RB, kunjungan tim evaluator, atau permintaan mendadak dari Diskominfo/Bagian Organisasi Setda. Skill ini memangkas waktu dari kertas kosong ke draf terstruktur, bukan menggantikan kerja substansi yang tetap jadi tanggung jawab penyusun.
+- **Diskominfo harus menagih ke puluhan OPD dengan pemahaman yang timpang.** Tim SPBE Diskominfo kerap merangkap wasit sekaligus pemadam kebakaran: mengumpulkan input dari Dinas, Badan, Kecamatan, hingga Sekretariat dengan tingkat literasi tata kelola TI yang sangat beragam. Skill ini memberi kerangka yang sama untuk semua tipe OPD, sehingga hasil antar-OPD lebih sepadan saat digulung jadi gambaran tingkat Pemda (Mode SINTESIS).
+- **Mutasi dan rotasi ASN menghapus jejak institusional.** Ketika penyusun lama dimutasi atau pensiun, dokumen dan pemahaman konteksnya sering ikut hilang, dan penyusun baru mulai dari nol lagi. Mekanisme Dosir dirancang untuk masalah ini: status pemetaan, titik integrasi, dan riwayat koreksi tersimpan di satu berkas yang bisa diwariskan ke penyusun berikutnya, bukan tersimpan di kepala orang yang sudah pindah tugas.
+- **Dokumen sering berakhir jadi salin-tempel tahun lalu.** Tanpa kerangka yang konsisten, cara tercepat menghadapi tenggat adalah menyalin dokumen tahun sebelumnya lalu mengganti tanggal, yang berisiko jadi temuan Inspektorat/APIP begitu data sudah tidak sesuai kondisi riil. Disiplin anti-fabrikasi skill ini (`[ISI: ...]`) memaksa perbedaan antara fakta dan tebakan tetap terlihat, bukan tertutup rapi oleh narasi yang meyakinkan.
+- **Bahasa regulasi dan bahasa kantor sering tidak nyambung.** Dasar hukum (UU 23/2014, PP 18/2016) ditulis dalam bahasa legal-normatif yang tidak otomatis bisa dipetakan ke nama bidang/seksi/aplikasi yang dipakai sehari-hari di kantor dinas. Skill ini menjembatani keduanya lewat crosswalk dan matriks urusan, sehingga hasilnya tetap punya legitimasi legal tanpa menuntut penyusun jadi ahli hukum tata negara.
+
+Skill ini tidak menghapus tanggung jawab substansi ASN penyusun. Ia memindahkan waktu mereka dari "mulai dari kertas kosong dan bingung format resmi" ke "meninjau, memvalidasi data lapangan, dan mengambil keputusan kebijakan" yang memang wewenang pimpinan, bukan wewenang skill.
 
 ## Apa yang Dihasilkan
 
