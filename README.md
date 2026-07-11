@@ -227,6 +227,7 @@ Empat prinsip menjadi ciri khas skill ini.
 
 ## Riwayat Versi
 
+- **v1.4.1** — Perbaikan render dokumen: Daftar Isi tidak lagi blank (nomor halaman dipindah ke tabel dua kolom tanpa garis, andal di LibreOffice dan untuk judul panjang), dan tabel tidak lagi meluber margin kanan di Word (`TableLayoutType.FIXED`). Cara isi disusun tidak berubah.
 - **v1.4.0** — Output dokumen formal: generator `render_pemdi_docx.js` merender markdown enam domain menjadi Word resmi (sampul, kata pengantar, daftar isi bernomor akurat dua-lintasan, nomor halaman, tabel berformat, penanda `[ISI:]` merah), dengan `template-gaya-dokumen.md` sebagai kontrak gaya. Markdown tetap sumber kebenaran, docx artefak turunan. Menutup celah konsistensi format antar dokumen OPD.
 - **v1.3.0** — Mode PERENCANAAN: penyusunan arsitektur To-be dan Katalog Gap dengan disiplin tiga kategori (gap teramati, rujukan normatif, keputusan kebijakan) dan kaidah usulan bertanda.
 - **v1.2.2** — Crosswalk 32 urusan konkuren ke kode RAB Perpres 132/2022, dan pelengkapan kode urusan dua-bagian pada tabel RAB.

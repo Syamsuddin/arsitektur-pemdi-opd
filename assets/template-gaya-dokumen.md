@@ -10,7 +10,7 @@ Urutan bagian, tidak boleh berubah:
 
 1. **Sampul** (tanpa nomor halaman). Blok: nama pemerintah kabupaten, provinsi, garis aksen, judul besar "DOKUMEN ARSITEKTUR PEMERINTAHAN DIGITAL (PEMDI)", subjudul "TINGKAT PERANGKAT DAERAH", nama OPD (besar), dasar hukum Perbup, catatan kerangka SPBE dan SIA-SPBE. Slot logo opsional di atas nama pemerintah.
 2. **Kata Pengantar** (halaman bernomor mulai 1). Empat paragraf baku, diakhiri blok tanda tangan kanan (Kandangan, tahun; tim penyusun; nama OPD).
-3. **Daftar Isi** dengan dot leader dan nomor halaman akurat.
+3. **Daftar Isi** sebagai tabel dua kolom tanpa garis (judul | nomor halaman rata-kanan) dengan nomor halaman akurat.
 4. **Isi**: Identitas Dokumen, Catatan Pembuka (jika ada), lalu BAB I sampai penutup (enam domain).
 
 ## 2. Token Gaya (design tokens)

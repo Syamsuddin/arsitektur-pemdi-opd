@@ -5,8 +5,12 @@
  * Pakai:
  *   node render_pemdi_docx.js <input.md> <output.docx> [config.json]
  *
- * Menghasilkan .docx resmi: sampul, kata pengantar, daftar isi (dot leader +
- * nomor halaman akurat via dua-lintasan), nomor halaman footer, tabel berformat.
+ * Menghasilkan .docx resmi: sampul, kata pengantar, daftar isi (tabel judul|nomor
+ * dengan nomor halaman akurat via dua-lintasan), nomor halaman footer, tabel berformat.
+ *
+ * Daftar Isi memakai TABEL dua kolom tanpa garis (bukan tab/PositionalTab): nomor
+ * halaman ada di sel rata-kanan tersendiri sehingga selalu terender di LibreOffice
+ * untuk semua panjang judul. Lihat catatan di fungsi daftarIsi().
  *
  * Sumber kebenaran tetap markdown. Skrip ini hanya me-render. Jalankan ulang
  * kapan pun markdown berubah.
@@ -32,8 +36,8 @@ const path = require('path');
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   WidthType, BorderStyle, AlignmentType, PageBreak, Footer, PageNumber,
-  ShadingType, TabStopType, PositionalTab, PositionalTabAlignment,
-  PositionalTabLeader, NumberFormat, VerticalAlign, ImageRun, TableOfContents
+  ShadingType, TableLayoutType,
+  NumberFormat, VerticalAlign, ImageRun, TableOfContents
 } = require('docx');
 
 // ---------- config & CLI ----------
@@ -154,7 +158,7 @@ function table(headers, rows) {
     margins: { top: 30, bottom: 30, left: 80, right: 80 },
     children: [new Paragraph({ spacing: { after: 0, line: 232 }, children: parseInline(r[k] !== undefined ? r[k] : '', { size: STYLE.tableSize }) })]
   })) }));
-  return new Table({ columnWidths: widths, width: { size: tW, type: WidthType.DXA }, borders, rows: [head, ...brows] });
+  return new Table({ columnWidths: widths, width: { size: tW, type: WidthType.DXA }, layout: TableLayoutType.FIXED, borders, rows: [head, ...brows] });
 }
 
 // ---------- cover / front matter ----------
@@ -207,17 +211,30 @@ function kataPengantar() {
 function daftarIsi(toc, pageMap, dynamic) {
   const out = [heading('DAFTAR ISI', 1)];
   if (dynamic) { out.push(new TableOfContents('Daftar Isi', { hyperlink: true, headingStyleRange: '1-3' })); out.push(new Paragraph({ children: [new PageBreak()] })); return out; }
-  toc.forEach(e => {
+  // Daftar Isi dibangun sebagai TABEL dua kolom tanpa garis (judul | nomor).
+  // Alasan (hasil uji LibreOffice):
+  //  - PositionalTab (w:ptab) RIGHT: LibreOffice tidak merender teks sesudahnya
+  //    -> nomor halaman hilang, Daftar Isi tampak blank.
+  //  - Tab-stop RIGHT + dot leader: nomor hilang untuk judul PANJANG (teks judul
+  //    melewati posisi tab, tab jadi tak berfungsi).
+  //  - Tabel dua kolom: nomor ada di sel sendiri (rata-kanan) -> terender andal
+  //    untuk semua panjang judul. Di portrait A4 nomor jatuh ~530pt (aman render).
+  const NOBD = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+  const noBorders = { top: NOBD, bottom: NOBD, left: NOBD, right: NOBD, insideHorizontal: NOBD, insideVertical: NOBD };
+  const numW = 760, titleW = STYLE.contentW - numW;
+  const rows = toc.map(e => {
     const label = stripInline(e.text); const pg = pageMap ? String(pageMap[e.key] || '') : '';
-    out.push(new Paragraph({
-      spacing: { after: e.level === 1 ? 100 : 60, line: 264 }, indent: e.level === 2 ? { left: 460 } : {},
-      children: [
-        new TextRun({ text: label, size: e.level === 1 ? 22 : 20, bold: e.level === 1, font: STYLE.bodyFont, color: e.level === 1 ? STYLE.navy : '000000' }),
-        new TextRun({ children: [new PositionalTab({ alignment: PositionalTabAlignment.RIGHT, relativeTo: 'margin', leader: PositionalTabLeader.DOT })], size: e.level === 1 ? 22 : 20 }),
-        new TextRun({ text: pg, size: e.level === 1 ? 22 : 20, bold: e.level === 1, font: STYLE.bodyFont })
-      ]
-    }));
+    const sz = e.level === 1 ? 22 : 20; const clr = e.level === 1 ? STYLE.navy : '000000';
+    return new TableRow({ children: [
+      new TableCell({ width: { size: titleW, type: WidthType.DXA }, borders: noBorders,
+        margins: { top: 30, bottom: 30, left: e.level === 2 ? 360 : 0, right: 60 },
+        children: [new Paragraph({ spacing: { after: 0, line: 264 }, children: [new TextRun({ text: label, size: sz, bold: e.level === 1, font: STYLE.bodyFont, color: clr })] })] }),
+      new TableCell({ width: { size: numW, type: WidthType.DXA }, borders: noBorders,
+        margins: { top: 30, bottom: 30, left: 0, right: 0 },
+        children: [new Paragraph({ alignment: AlignmentType.RIGHT, spacing: { after: 0, line: 264 }, children: [new TextRun({ text: pg, size: sz, bold: e.level === 1, font: STYLE.bodyFont, color: clr })] })] })
+    ] });
   });
+  out.push(new Table({ columnWidths: [titleW, numW], width: { size: STYLE.contentW, type: WidthType.DXA }, layout: TableLayoutType.FIXED, borders: noBorders, rows }));
   out.push(new Paragraph({ children: [new PageBreak()] }));
   return out;
 }
