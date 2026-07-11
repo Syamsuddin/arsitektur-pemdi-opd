@@ -1,6 +1,6 @@
 # pemdi-arsitektur-opd
 
-![Arsitektur Pemdi](assets/banner-skill.png)
+![Arsitektur Pemdi](skills/pemdi-arsitektur-opd/assets/banner-skill.png)
 
 **Skill Claude untuk menyusun Arsitektur SPBE/Pemdi tingkat Perangkat Daerah (OPD), universal untuk seluruh kabupaten/kota di Indonesia.**
 
@@ -8,7 +8,7 @@ Selaras dengan dasar hukum terbaru — UU 23/2014 (Pemerintahan Daerah), Perpres
 
 [![Made for Claude](https://img.shields.io/badge/Made%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.ai)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-8A63D2?logo=anthropic&logoColor=white)](https://claude.ai)
-![Version](https://img.shields.io/badge/version-1.3.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.1-blue)
 ![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![SPBE / Pemdi](https://img.shields.io/badge/SPBE-Pemdi-0A66C2)
 ![Pemerintah Daerah](https://img.shields.io/badge/Pemerintah-Daerah-critical)
