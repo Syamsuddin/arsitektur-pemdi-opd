@@ -111,24 +111,31 @@ Agar harapan tepat, berikut yang dilakukan dan yang tidak dilakukan skill ini.
 Skill terdiri dari satu berkas instruksi utama, sembilan berkas referensi, satu templat memori kerja, dan aset output dokumen (generator Word dan spesifikasi gaya).
 
 ```
-pemdi-arsitektur-opd/
-├── SKILL.md                          Instruksi utama dan alur kerja tiga mode
+arsitektur-pemdi-opd/
+├── .claude-plugin/
+│   ├── marketplace.json              Katalog marketplace (untuk /plugin marketplace add)
+│   └── plugin.json                   Manifest plugin Claude Code
 ├── README.md                         Berkas ini
-├── references/
-│   ├── referensi-nasional.md         Kerangka 6 domain + tabel RAB berkode (Perpres 132/2022)
-│   ├── matriks-urusan-uu23-2014.md   32 urusan konkuren + crosswalk ke kode RAB
-│   ├── matriks-proses-bisnis.md      Jembatan sub-urusan ke proses bisnis konkret
-│   ├── metodologi-probis.md          Kerangka penyusunan proses bisnis (Permenpan 19/2018)
-│   ├── matriks-aplikasi-spbe.md      Klasifikasi aplikasi Umum dan Khusus
-│   ├── pola-integrasi-pasangan.md    Pola titik integrasi antar-OPD
-│   ├── tipe-opd-non-dinas.md         Jalur derivasi untuk OPD non-Dinas
-│   ├── metadata-sia-spbe.md          Nama field metadata resmi per domain (portal SIA-SPBE)
-│   ├── regulasi-pemdi-2026.md        Permenpan 8/2026 (Indeks Pemdi)
-│   └── kerangka-tobe-gap.md          Metodologi To-be dan Katalog Gap (Mode PERENCANAAN)
-└── assets/
-    ├── dosir-template.json           Templat memori kerja lintas-OPD
-    ├── render_pemdi_docx.js          Generator output Word resmi (Langkah 5)
-    └── template-gaya-dokumen.md      Spesifikasi gaya dan konvensi markdown output
+├── LICENSE                           GNU GPL-3.0
+├── CLAUDE.md                         Panduan untuk mengedit repo skill ini
+└── skills/
+    └── pemdi-arsitektur-opd/         Skill (dipindai otomatis oleh plugin)
+        ├── SKILL.md                  Instruksi utama dan alur kerja empat mode
+        ├── references/
+        │   ├── referensi-nasional.md         Kerangka 6 domain + tabel RAB berkode (Perpres 132/2022)
+        │   ├── matriks-urusan-uu23-2014.md   32 urusan konkuren + crosswalk ke kode RAB
+        │   ├── matriks-proses-bisnis.md      Jembatan sub-urusan ke proses bisnis konkret
+        │   ├── metodologi-probis.md          Kerangka penyusunan proses bisnis (Permenpan 19/2018)
+        │   ├── matriks-aplikasi-spbe.md      Klasifikasi aplikasi Umum dan Khusus
+        │   ├── pola-integrasi-pasangan.md    Pola titik integrasi antar-OPD
+        │   ├── tipe-opd-non-dinas.md         Jalur derivasi untuk OPD non-Dinas
+        │   ├── metadata-sia-spbe.md          Nama field metadata resmi per domain (portal SIA-SPBE)
+        │   ├── regulasi-pemdi-2026.md        Permenpan 8/2026 (Indeks Pemdi)
+        │   └── kerangka-tobe-gap.md          Metodologi To-be dan Katalog Gap (Mode PERENCANAAN)
+        └── assets/
+            ├── dosir-template.json           Templat memori kerja lintas-OPD
+            ├── render_pemdi_docx.js          Generator output Word resmi (Langkah 5)
+            └── template-gaya-dokumen.md      Spesifikasi gaya dan konvensi markdown output
 ```
 
 ### Empat Mode Kerja
@@ -153,17 +160,35 @@ Dosir adalah berkas ringkas yang menyimpan status kumulatif: OPD yang sudah dipe
 
 ## Prasyarat dan Instalasi
 
-Skill ini dapat dipasang dengan dua cara: mengunggah berkas `.skill` melalui Claude.ai/Claude Desktop, atau menarik langsung repositori GitHub ke `~/.claude/skills/` untuk Claude Code (CLI). Kedua cara menghasilkan skill yang sama; pilih sesuai antarmuka Claude yang Anda pakai.
+Skill ini dapat dipasang dengan tiga cara: lewat **marketplace plugin Claude Code** (paling mudah, otomatis diperbarui), mengunggah berkas `.skill` melalui Claude.ai/Claude Desktop, atau menyalin manual ke `~/.claude/skills/`. Ketiga cara menghasilkan skill yang sama; pilih sesuai antarmuka Claude yang Anda pakai.
 
-### Cara 1 — Claude.ai / Claude Desktop (berkas `.skill`)
+### Cara 1 — Marketplace plugin Claude Code (rekomendasi)
+
+Repositori ini juga merupakan **plugin marketplace** Claude Code. Cukup dua perintah di dalam sesi Claude Code:
+
+```shell
+/plugin marketplace add Syamsuddin/arsitektur-pemdi-opd
+/plugin install pemdi-arsitektur-opd@pemdi-marketplace
+```
+
+Atau dari terminal (non-interaktif):
+
+```bash
+claude plugin marketplace add Syamsuddin/arsitektur-pemdi-opd
+claude plugin install pemdi-arsitektur-opd@pemdi-marketplace
+```
+
+Skill langsung terpasang dan aktif otomatis saat permintaan Anda berkaitan dengan arsitektur SPBE/Pemdi. Untuk memperbarui ke versi terbaru: `/plugin marketplace update pemdi-marketplace`. Karena versi di-pin ke field `version` manifest, pengguna menerima pembaruan ketika versi dinaikkan pada rilis baru.
+
+### Cara 2 — Claude.ai / Claude Desktop (berkas `.skill`)
 
 Unggah berkas `pemdi-arsitektur-opd.skill` melalui pengaturan skill pada akun Claude Anda. Setelah terpasang, skill akan aktif secara otomatis ketika permintaan Anda berkaitan dengan penyusunan arsitektur SPBE/Pemdi.
 
 Ketersediaan menu pemasangan skill dapat berbeda menurut jenis paket akun. Jika menu tidak muncul, fitur mungkin perlu diaktifkan lebih dulu oleh admin workspace Anda.
 
-### Cara 2 — Claude Code (CLI), langsung dari GitHub
+### Cara 3 — Salin manual ke `~/.claude/skills/`
 
-Untuk memasang skill ini di Claude Code lengkap dengan seluruh berkas referensi, `clone` repositori GitHub lalu salin isinya ke direktori skill milik Claude Code:
+Alternatif tanpa marketplace: `clone` repositori lalu salin isi folder skill ke direktori skill milik Claude Code. Perhatikan sumbernya kini `skills/pemdi-arsitektur-opd/`:
 
 ```bash
 # 1. Clone repositori ke lokasi sementara
@@ -172,16 +197,18 @@ git clone https://github.com/Syamsuddin/arsitektur-pemdi-opd.git /tmp/arsitektur
 # 2. Buat direktori skill tujuan (jika belum ada)
 mkdir -p ~/.claude/skills/pemdi-arsitektur-opd
 
-# 3. Salin seluruh berkas (SKILL.md, README.md, references/, assets/), kecuali metadata git
-rsync -a --exclude='.git' --exclude='.DS_Store' /tmp/arsitektur-pemdi-opd/ ~/.claude/skills/pemdi-arsitektur-opd/
+# 3. Salin isi folder skill (SKILL.md, references/, assets/), kecuali metadata git
+rsync -a --exclude='.git' --exclude='.DS_Store' \
+  /tmp/arsitektur-pemdi-opd/skills/pemdi-arsitektur-opd/ \
+  ~/.claude/skills/pemdi-arsitektur-opd/
 
 # 4. Bersihkan berkas sementara
 rm -rf /tmp/arsitektur-pemdi-opd
 ```
 
-Setelah langkah di atas, direktori `~/.claude/skills/pemdi-arsitektur-opd/` akan berisi `SKILL.md`, `CLAUDE.md`, `README.md`, `LICENSE`, seluruh sembilan berkas di `references/`, dan `assets/` (termasuk `dosir-template.json`). Claude Code membaca frontmatter `name: pemdi-arsitektur-opd` pada `SKILL.md` untuk mendaftarkan skill ini secara otomatis pada sesi berikutnya — tidak perlu konfigurasi tambahan.
+Setelah langkah di atas, direktori `~/.claude/skills/pemdi-arsitektur-opd/` akan berisi `SKILL.md`, seluruh sembilan berkas di `references/`, dan `assets/` (termasuk `dosir-template.json`). Claude Code membaca frontmatter `name: pemdi-arsitektur-opd` pada `SKILL.md` untuk mendaftarkan skill ini secara otomatis pada sesi berikutnya — tidak perlu konfigurasi tambahan.
 
-Untuk memperbarui ke versi terbaru di kemudian hari, ulangi keempat langkah tersebut; isi direktori skill akan ditimpa dengan versi terbaru dari GitHub.
+Untuk memperbarui, ulangi keempat langkah tersebut; isi direktori skill akan ditimpa dengan versi terbaru dari GitHub.
 
 ## Cara Penggunaan
 

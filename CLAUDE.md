@@ -4,18 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-This is a **Claude Skill package** named `pemdi-arsitektur-opd`, not an application. It contains authored instructions and reference data (all Markdown + JSON) that teach Claude to draft SPBE/Pemdi enterprise-architecture documents for Indonesian local-government agencies (OPD). There is **no code to build, lint, or test** and no git repository here. Work in this repo is editing prose and reference tables, not writing software.
+This is a **Claude Skill package** named `pemdi-arsitektur-opd`, not an application. It contains authored instructions and reference data (mostly Markdown + JSON) that teach Claude to draft SPBE/Pemdi enterprise-architecture documents for Indonesian local-government agencies (OPD). Work here is mainly editing prose and reference tables; the one piece of real code is `render_pemdi_docx.js` (the Word generator). The repo is version-controlled (git remote on GitHub).
 
 The whole package is written in **Bahasa Indonesia**. Match that language and its formal governmental register when editing.
 
-The deliverable is packaged as a single `pemdi-arsitektur-opd.skill` file that users upload into Claude. Editing here means editing the source; there is no compile step in this working tree.
+The repo doubles as a **Claude Code plugin marketplace**: `.claude-plugin/marketplace.json` + `.claude-plugin/plugin.json` at the root let users install via `/plugin marketplace add Syamsuddin/arsitektur-pemdi-opd` then `/plugin install pemdi-arsitektur-opd@pemdi-marketplace`. The skill itself lives under `skills/pemdi-arsitektur-opd/` (Claude Code auto-scans the `skills/` folder). It can also be packaged as a single `pemdi-arsitektur-opd.skill` file (zip of the skill folder with `SKILL.md` at the zip root) for claude.ai upload. There is no compile step; the `.skill` is a build artifact (git-ignored, rebuilt from source).
 
 ## Layout and what each file drives
 
-- `SKILL.md` — the entry point. YAML frontmatter (`name`, `description`) controls when the skill auto-activates; the body defines the four work modes and their step-by-step procedures. This is the file that is loaded first and always.
-- `references/*.md` — nine reference documents, loaded **selectively and on demand** (never all at once — see below). Each maps to a specific step in a mode.
-- `assets/dosir-template.json` — the schema/skeleton for the "Dosir", the skill's cross-session working memory.
-- `README.md` — human-facing overview and full changelog. Keep it in sync when behavior changes.
+- `.claude-plugin/marketplace.json` — marketplace catalog (marketplace name `pemdi-marketplace`, one plugin entry with `source: "./"`).
+- `.claude-plugin/plugin.json` — plugin manifest (`name`, `version`, `description`). Bump `version` on each release so installed users receive the update.
+- `skills/pemdi-arsitektur-opd/SKILL.md` — the entry point. YAML frontmatter (`name`, `description`) controls when the skill auto-activates; the body defines the four work modes and their step-by-step procedures. This is the file that is loaded first and always.
+- `skills/pemdi-arsitektur-opd/references/*.md` — nine reference documents, loaded **selectively and on demand** (never all at once — see below). Each maps to a specific step in a mode.
+- `skills/pemdi-arsitektur-opd/assets/dosir-template.json` — the schema/skeleton for the "Dosir", the skill's cross-session working memory.
+- `skills/pemdi-arsitektur-opd/assets/render_pemdi_docx.js` + `template-gaya-dokumen.md` — the Word-output generator (Langkah 5) and its style contract.
+- `README.md` (root) — human-facing overview and full changelog. Keep it in sync when behavior changes.
+- `CLAUDE.md`, `LICENSE` (root) — repo-level docs; not part of the distributed skill.
 
 ## Core architecture: four modes over a shared automatic prelude
 
@@ -58,4 +62,4 @@ These are the load-bearing invariants of the skill's design. Editing prose here 
 
 ## When you change behavior
 
-Keep three places consistent: the procedure in `SKILL.md`, the "Versi dan Changelog" section at the bottom of `SKILL.md`, and the "Riwayat Versi" section in `README.md`. The current version is **v1.3.0**. If a reference file's role changes, update both its bullet in `SKILL.md`'s "Referensi" list and the layout tree in `README.md`.
+Keep these places consistent: the procedure in `SKILL.md`, the "Versi dan Changelog" section at the bottom of `SKILL.md`, the "Riwayat Versi" section in `README.md`, and the `version` field in both `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` (bump on every release so marketplace users receive the update). The current version is **v1.4.1**. If a reference file's role changes, update both its bullet in `SKILL.md`'s "Referensi" list and the layout tree in `README.md`.

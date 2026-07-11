@@ -1,0 +1,23 @@
+{
+  "name": "pemdi-marketplace",
+  "owner": {
+    "name": "Syamsuddin Ideris",
+    "email": "syamsuddin.ideris@gmail.com"
+  },
+  "description": "Marketplace skill Arsitektur Pemerintahan Digital (Pemdi)/SPBE untuk pemerintah daerah Indonesia.",
+  "plugins": [
+    {
+      "name": "pemdi-arsitektur-opd",
+      "source": "./",
+      "description": "Menyusun Arsitektur Pemdi/SPBE tingkat OPD: pemetaan enam domain, sintesis lintas-OPD, koreksi, perencanaan To-be dan Katalog Gap, output dokumen Word resmi.",
+      "version": "1.4.1",
+      "author": {
+        "name": "Syamsuddin Ideris"
+      },
+      "homepage": "https://github.com/Syamsuddin/arsitektur-pemdi-opd",
+      "license": "GPL-3.0",
+      "category": "productivity",
+      "keywords": ["spbe", "pemdi", "arsitektur", "pemerintah-daerah", "opd", "indonesia"]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "pemdi-arsitektur-opd",
+  "description": "Menyusun Arsitektur Pemerintahan Digital (Pemdi)/SPBE tingkat Perangkat Daerah (OPD) untuk kabupaten/kota manapun: pemetaan enam domain, sintesis lintas-OPD, koreksi, perencanaan To-be dan Katalog Gap, plus output dokumen Word resmi.",
+  "version": "1.4.1",
+  "author": {
+    "name": "Syamsuddin Ideris",
+    "email": "syamsuddin.ideris@gmail.com"
+  },
+  "homepage": "https://github.com/Syamsuddin/arsitektur-pemdi-opd",
+  "repository": "https://github.com/Syamsuddin/arsitektur-pemdi-opd",
+  "license": "GPL-3.0",
+  "keywords": ["spbe", "pemdi", "arsitektur", "pemerintah-daerah", "opd", "sia-spbe", "indonesia"]
+}

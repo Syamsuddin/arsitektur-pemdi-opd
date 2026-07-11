@@ -6,3 +6,6 @@
 
 # Dependensi Node lokal untuk uji render (bukan bagian skill)
 node_modules/
+
+# Berkas workspace VSCode (spesifik pengguna)
+*.code-workspace
