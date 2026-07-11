@@ -4,7 +4,7 @@
 
 **Skill Claude untuk menyusun Arsitektur SPBE/Pemdi tingkat Perangkat Daerah (OPD), universal untuk seluruh kabupaten/kota di Indonesia.**
 
-Selaras dengan dasar hukum terbaru — UU 23/2014 (Pemerintahan Daerah), Perpres 132/2022 (Arsitektur SPBE Nasional), dan Permenpan RB 8/2026 (Indeks Pemdi) — skill ini memetakan **6 domain arsitektur** satu Perangkat Daerah.
+Selaras dengan dasar hukum terbaru — UU 23/2014 (Pemerintahan Daerah), Perpres 132/2022 (Arsitektur SPBE Nasional), dan Permenpan RB 8/2026 (Indeks Pemdi) — skill ini memetakan **6 domain arsitektur**: Proses Bisnis, Data dan Informasi, Layanan SPBE, Aplikasi SPBE, Infrastruktur SPBE, dan Keamanan SPBE. Alurnya mengikuti terminologi resmi perencanaan tata kelola: **As-is** (kondisi saat ini), **To-be** (kondisi ideal yang dituju), dan **Katalog Gap** (kesenjangan antara keduanya beserta rencana penutupnya).
 
 [![Made for Claude](https://img.shields.io/badge/Made%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.ai)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-8A63D2?logo=anthropic&logoColor=white)](https://claude.ai)
@@ -33,37 +33,36 @@ Selaras dengan dasar hukum terbaru — UU 23/2014 (Pemerintahan Daerah), Perpres
 12. [Riwayat Versi](#riwayat-versi)
 13. [Keterbatasan yang Diketahui](#keterbatasan-yang-diketahui)
 14. [Lisensi](#lisensi)
-15. [Kontak](#kontak)
-16. [Atribusi](#atribusi)
+15. [Atribusi](#atribusi)
 
 ---
 
 ## Tentang Skill Ini
 
-Setiap pemerintah kabupaten/kota wajib menyusun Arsitektur SPBE (kini disebut Pemdi) untuk memetakan proses bisnis, data, layanan, aplikasi, infrastruktur, dan keamanan secara terpadu. Dalam praktiknya, tugas ini seringkali jatuh pada punggung staf pelaksana atau pejabat fungsional yang merangkap, dengan tenggat waktu pendek dan kejelasan persyaratan minimal.
+Setiap pemerintah kabupaten/kota wajib menyusun Arsitektur SPBE (kini disebut Pemdi) untuk memetakan proses bisnis, data, layanan, aplikasi, infrastruktur, dan keamanan secara terpadu. Dalam praktiknya, penyusunan ini sering terhambat: praktisi mulai dari kertas kosong, bingung format resminya, tidak yakin sebuah OPD urusannya apa saja, dan rentan mengisi dokumen dengan data yang belum tervalidasi.
 
-Skill ini menjadi pendamping penyusunan tersebut. Ia sudah memuat kerangka regulasi nasional, matriks urusan pemerintahan, metodologi proses bisnis, dan struktur metadata resmi portal arsitektur nasional. Tujuannya membantu menyelesaikan dokumen lebih cepat, tetap selaras dengan standar, dan transparan tentang bagian mana yang masih memerlukan validasi lapangan.
+Skill ini menjadi pendamping penyusunan tersebut. Ia sudah memuat kerangka regulasi nasional, matriks urusan pemerintahan, metodologi proses bisnis, dan struktur metadata resmi portal arsitektur nasional. Diberi nama sebuah OPD, skill akan menurunkannya menjadi dokumen arsitektur enam domain yang rapi, sesuai aturan, dan siap dilengkapi dengan data lapangan.
 
-Tujuan utamanya sederhana: mempercepat penyusunan dokumen arsitektur OPD, menjaganya tetap selaras dengan regulasi dan format portal nasional, serta jujur membedakan mana yang sudah pasti dan mana yang masih perlu dikonfirmasi.
+Tujuan utamanya sederhana: mempercepat penyusunan dokumen arsitektur OPD, menjaganya tetap selaras dengan regulasi dan format portal nasional, serta jujur membedakan mana yang sudah pasti dan mana yang masih perlu diverifikasi.
 
 ## Untuk Siapa
 
-Skill ini ditujukan untuk praktisi transformasi digital pemerintah daerah, antara lain tim SPBE/Pemdi Diskominfo, Bagian Organisasi Setda, koordinator SPBE daerah, konsultan tata kelola pemerintahan, dan auditor yang mempertanyakan arsitektur eksisting.
+Skill ini ditujukan untuk praktisi transformasi digital pemerintah daerah, antara lain tim SPBE/Pemdi Diskominfo, Bagian Organisasi Setda, koordinator SPBE daerah, konsultan tata kelola pemerintahan, dan siapa saja yang bertugas menyusun atau mereviu dokumen Arsitektur SPBE tingkat OPD maupun tingkat Pemda.
 
 Skill bersifat Pemda-agnostik: tidak terikat pada satu kabupaten/kota tertentu, sehingga dapat dipakai di daerah manapun. Skill juga order-agnostic: pemetaan dapat dimulai dari OPD manapun tanpa urutan tertentu.
 
 ## Konteks: Beban Kerja Nyata ASN Pemkab
 
-Di balik dokumen "Arsitektur SPBE" yang formal, ada realita meja kerja yang jarang ditulis di panduan resmi. Skill ini dirancang bukan dari ruang kelas kebijakan, tapi dari pengamatan langsung terhadap kondisi lapangan:
+Di balik dokumen "Arsitektur SPBE" yang formal, ada realita meja kerja yang jarang ditulis di panduan resmi. Skill ini dirancang bukan dari ruang kelas kebijakan, tapi dari pengamatan langsung terhadap bagaimana dokumen ini benar-benar disusun di kantor kabupaten/kota.
 
-- **Tugas ini sering "menempel" pada jabatan yang bukan aslinya.** Penyusun Arsitektur SPBE/Pemdi di banyak OPD adalah staf pelaksana atau pejabat fungsional yang merangkap jadi admin/operator SPBE, dengan beban kerja utama yang sudah penuh.
-- **Tenggat datang mendadak, biasanya menjelang evaluasi.** Penyusunan sering dikebut dalam hitungan hari menjelang penilaian Indeks SPBE/Pemdi oleh Kemenpan RB, kunjungan tim evaluator, atau permintaan kepala daerah.
-- **Diskominfo harus menagih ke puluhan OPD dengan pemahaman yang timpang.** Tim SPBE Diskominfo kerap merangkap wasit sekaligus pemadam kebakaran: mengumpulkan input dari Dinas, Badan, Kecamatan, harus memahami lalu memvalidasi, sering kali berhadapan dengan resistensi atau ketidakpahaman.
-- **Mutasi dan rotasi ASN menghapus jejak institusional.** Ketika penyusun lama dimutasi atau pensiun, dokumen dan pemahaman konteksnya sering ikut hilang, dan penyusun baru mulai dari nol lagi. Mekanisme pewarisan pengetahuan minim.
-- **Dokumen sering berakhir jadi salin-tempel tahun lalu.** Tanpa kerangka yang konsisten, cara tercepat menghadapi tenggat adalah menyalin dokumen tahun sebelumnya lalu mengganti tanggal, yang berisi data kadaluarsa atau tidak akurat.
-- **Bahasa regulasi dan bahasa kantor sering tidak nyambung.** Dasar hukum (UU 23/2014, PP 18/2016) ditulis dalam bahasa legal-normatif yang tidak otomatis bisa dipetakan ke nama bidang/seksi/aplikasi di lapangan.
+- **Tugas ini sering "menempel" pada jabatan yang bukan aslinya.** Penyusun Arsitektur SPBE/Pemdi di banyak OPD adalah staf pelaksana atau pejabat fungsional yang merangkap jadi admin/operator SPBE, bukan arsitek enterprise bersertifikat. Beban regulasi yang tebal (Perpres 132/2022, Permenpan 8/2026) harus diterjemahkan oleh orang yang latar belakangnya sering bukan TI.
+- **Tenggat datang mendadak, biasanya menjelang evaluasi.** Penyusunan sering dikebut dalam hitungan hari menjelang penilaian Indeks SPBE/Pemdi oleh Kemenpan RB, kunjungan tim evaluator, atau permintaan mendadak dari Diskominfo/Bagian Organisasi Setda. Skill ini memangkas waktu dari kertas kosong ke draf terstruktur, bukan menggantikan kerja substansi yang tetap jadi tanggung jawab penyusun.
+- **Diskominfo harus menagih ke puluhan OPD dengan pemahaman yang timpang.** Tim SPBE Diskominfo kerap merangkap wasit sekaligus pemadam kebakaran: mengumpulkan input dari Dinas, Badan, Kecamatan, hingga Sekretariat dengan tingkat literasi tata kelola TI yang sangat beragam. Skill ini memberi kerangka yang sama untuk semua tipe OPD, sehingga hasil antar-OPD lebih sepadan saat digulung jadi gambaran tingkat Pemda (Mode SINTESIS).
+- **Mutasi dan rotasi ASN menghapus jejak institusional.** Ketika penyusun lama dimutasi atau pensiun, dokumen dan pemahaman konteksnya sering ikut hilang, dan penyusun baru mulai dari nol lagi. Mekanisme Dosir dirancang untuk masalah ini: status pemetaan, titik integrasi, dan riwayat koreksi tersimpan di satu berkas yang bisa diwariskan ke penyusun berikutnya, bukan tersimpan di kepala orang yang sudah pindah tugas.
+- **Dokumen sering berakhir jadi salin-tempel tahun lalu.** Tanpa kerangka yang konsisten, cara tercepat menghadapi tenggat adalah menyalin dokumen tahun sebelumnya lalu mengganti tanggal, yang berisiko jadi temuan Inspektorat/APIP begitu data sudah tidak sesuai kondisi riil. Disiplin anti-fabrikasi skill ini (`[ISI: ...]`) memaksa perbedaan antara fakta dan tebakan tetap terlihat, bukan tertutup rapi oleh narasi yang meyakinkan.
+- **Bahasa regulasi dan bahasa kantor sering tidak nyambung.** Dasar hukum (UU 23/2014, PP 18/2016) ditulis dalam bahasa legal-normatif yang tidak otomatis bisa dipetakan ke nama bidang/seksi/aplikasi yang dipakai sehari-hari di kantor dinas. Skill ini menjembatani keduanya lewat crosswalk dan matriks urusan, sehingga hasilnya tetap punya legitimasi legal tanpa menuntut penyusun jadi ahli hukum tata negara.
 
-Skill ini tidak menghapus tanggung jawab substansi ASN penyusun. Ia memindahkan waktu mereka dari "mulai dari kertas kosong dan bingung format resmi" ke "meninjau, memvalidasi data lapangan, dan mengambil keputusan".
+Skill ini tidak menghapus tanggung jawab substansi ASN penyusun. Ia memindahkan waktu mereka dari "mulai dari kertas kosong dan bingung format resmi" ke "meninjau, memvalidasi data lapangan, dan mengambil keputusan kebijakan" yang memang wewenang pimpinan, bukan wewenang skill.
 
 ## Apa yang Dihasilkan
 
@@ -80,13 +79,14 @@ Setiap domain diisi mengikuti nama field metadata resmi portal SIA-SPBE, sehingg
 
 ## Fitur Utama
 
-- **Klasifikasi tipe OPD otomatis.** Skill membedakan OPD tipe Dinas (pelaksana urusan konkuren) dari OPD non-Dinas (Badan penunjang, Sekretariat, Inspektorat, Kecamatan, Kesbangpol) dan memilih jalur derivasi sesuai jenisnya.
+- **Klasifikasi tipe OPD otomatis.** Skill membedakan OPD tipe Dinas (pelaksana urusan konkuren) dari OPD non-Dinas (Badan penunjang, Sekretariat, Inspektorat, Kecamatan, Kesbangpol) dan memilih jalur derivasi yang benar untuk masing-masing.
 - **Matriks urusan lengkap.** Seluruh 32 urusan pemerintahan konkuren UU 23/2014 sudah terverifikasi dan siap dipakai.
 - **Crosswalk ke kode nasional.** Tiap urusan konkuren dipetakan ke kode Referensi Arsitektur Proses Bisnis (RAB) Perpres 132/2022, menutup celah terjemahan antara basis legal daerah dan klasifikasi portal nasional.
 - **Keselarasan metadata portal.** Output mengisi nama field resmi per domain sesuai Manual SIA-SPBE.
 - **Memori kerja lintas-OPD (Dosir).** Skill menyimpan status kumulatif pemetaan seluruh OPD dalam satu Pemda, termasuk prediksi titik integrasi antar-OPD.
-- **Perencanaan To-be dan Katalog Gap.** Skill dapat menyusun kondisi ideal dan kesenjangan, dengan disiplin membedakan gap yang teramati dari fakta, rujukan normatif dari aturan, dan keputusan kebijakan.
-- **Disiplin anti-fabrikasi.** Data yang belum tervalidasi ditandai dengan penanda `[ISI: ...]`, bukan diisi dengan tebakan. Dalam perencanaan, usulan skill yang belum dikonfirmasi ditandai `[USULAN CLAUDE, belum dikonfirmasi: ...]` — berbeda tegas dari `[ISI:]`.
+- **Perencanaan To-be dan Katalog Gap.** Skill dapat menyusun kondisi ideal dan kesenjangan, dengan disiplin membedakan gap yang teramati dari fakta, rujukan normatif dari aturan, dan keputusan kebijakan yang menunggu pengesahan pimpinan.
+- **Disiplin anti-fabrikasi.** Data yang belum tervalidasi ditandai dengan penanda `[ISI: ...]`, bukan diisi dengan tebakan. Dalam perencanaan, usulan skill yang belum dikonfirmasi ditandai `[USULAN CLAUDE, belum dikonfirmasi: ...]`, sehingga tidak tertukar dengan keputusan resmi.
+- **Output dokumen Word resmi.** Dokumen akhir tiap OPD dirender otomatis dari markdown menjadi `.docx` resmi lengkap dengan sampul, kata pengantar, daftar isi bernomor, nomor halaman, dan tabel berformat, sehingga konsisten dan siap ditandatangani. Markdown tetap sumber kebenaran; docx adalah artefak turunan yang selalu bisa dibangun ulang.
 
 ## Cakupan dan Batasan
 
@@ -108,13 +108,12 @@ Agar harapan tepat, berikut yang dilakukan dan yang tidak dilakukan skill ini.
 
 ## Arsitektur Skill
 
-Skill terdiri dari satu berkas instruksi utama, sembilan berkas referensi, dan satu templat.
+Skill terdiri dari satu berkas instruksi utama, sembilan berkas referensi, satu templat memori kerja, dan aset output dokumen (generator Word dan spesifikasi gaya).
 
 ```
 pemdi-arsitektur-opd/
-├── SKILL.md                          Instruksi utama dan alur kerja empat mode
+├── SKILL.md                          Instruksi utama dan alur kerja tiga mode
 ├── README.md                         Berkas ini
-├── CLAUDE.md                         Panduan penulisan untuk Claude Code
 ├── references/
 │   ├── referensi-nasional.md         Kerangka 6 domain + tabel RAB berkode (Perpres 132/2022)
 │   ├── matriks-urusan-uu23-2014.md   32 urusan konkuren + crosswalk ke kode RAB
@@ -128,7 +127,8 @@ pemdi-arsitektur-opd/
 │   └── kerangka-tobe-gap.md          Metodologi To-be dan Katalog Gap (Mode PERENCANAAN)
 └── assets/
     ├── dosir-template.json           Templat memori kerja lintas-OPD
-    └── banner-skill.png              Gambar banner skill
+    ├── render_pemdi_docx.js          Generator output Word resmi (Langkah 5)
+    └── template-gaya-dokumen.md      Spesifikasi gaya dan konvensi markdown output
 ```
 
 ### Empat Mode Kerja
@@ -136,7 +136,7 @@ pemdi-arsitektur-opd/
 - **PEMETAAN** menyusun arsitektur As-is satu OPD dari awal.
 - **SINTESIS** menggabungkan hasil pemetaan banyak OPD menjadi gambaran tingkat Pemda, termasuk katalog titik integrasi dan peta data sensitif.
 - **KOREKSI** memperbaiki dokumen yang sudah ada ketika muncul informasi baru, sambil mencatat riwayat koreksinya secara transparan.
-- **PERENCANAAN** menyusun arsitektur To-be dan Katalog Gap di atas As-is yang sudah ada, mengubah skill dari pendokumentasi menjadi alat perencanaan strategis.
+- **PERENCANAAN** menyusun arsitektur To-be dan Katalog Gap di atas As-is yang sudah ada, mengubah skill dari pendokumentasi menjadi alat perencanaan.
 
 ### Alur Mode PEMETAAN
 
@@ -144,16 +144,16 @@ pemdi-arsitektur-opd/
 2. **Langkah 1a/1b (Dinas)** menurunkan urusan konkuren ke proses bisnis konkret, atau **jalur non-Dinas** mengambil proses bisnis dari referensi tipe OPD penunjang.
 3. **Langkah 2 — Regulasi SOTK riil.** Mencari Peraturan Bupati/Wali Kota tentang struktur organisasi OPD, atau meminta pengguna mengunggahnya, untuk mendapat struktur bidang dan seksi yang sebenarnya.
 4. **Langkah 3 — Susun enam domain.** Menyusun keenam domain dengan mengisi nama field metadata resmi SIA-SPBE dan mengisi kolom referensi nasional dari crosswalk.
-5. **Langkah 4 — Pola integrasi.** Mengidentifikasi titik integrasi antar-OPD berdasarkan kesamaan data atau proses.
-6. **Langkah 5 — Dosir.** Memperbarui memori kerja dan menyajikannya sebagai berkas untuk disimpan pengguna di sesi berikutnya.
+5. **Langkah 4 — Pola integrasi.** Mengidentifikasi titik integrasi antar-OPD.
+6. **Langkah 5 — Dosir.** Memperbarui memori kerja dan menyajikannya sebagai berkas untuk disimpan pengguna.
 
-### Mekanisme Dosir (Memori Kerja Lintas-Sesi)
+### Mekanisme Dosir (Memori Kerja)
 
-Dosir adalah berkas ringkas JSON yang menyimpan status kumulatif: OPD yang sudah dipetakan, titik integrasi, fakta tervalidasi, dan catatan koreksi metodologis. Karena setiap sesi percakapan dimulai dari nol, persistensi bergantung pada pola unggah-ulang: pengguna menyimpan Dosir di akhir sesi, lalu mengunggahnya kembali di sesi berikutnya untuk melanjutkan.
+Dosir adalah berkas ringkas yang menyimpan status kumulatif: OPD yang sudah dipetakan, titik integrasi, fakta tervalidasi, dan catatan koreksi. Karena setiap sesi percakapan dimulai dari nol, persistensinya memakai pola unggah-ulang: di akhir sesi skill menyajikan Dosir untuk disimpan, dan di awal sesi berikutnya pengguna mengunggahnya kembali agar konteks kumulatif tetap terjaga.
 
 ## Prasyarat dan Instalasi
 
-Skill ini dapat dipasang dengan dua cara: mengunggah berkas `.skill` melalui Claude.ai atau Claude Desktop, atau menarik langsung repositori GitHub ke `~/.claude/skills/` untuk Claude Code (CLI).
+Skill ini dapat dipasang dengan dua cara: mengunggah berkas `.skill` melalui Claude.ai/Claude Desktop, atau menarik langsung repositori GitHub ke `~/.claude/skills/` untuk Claude Code (CLI). Kedua cara menghasilkan skill yang sama; pilih sesuai antarmuka Claude yang Anda pakai.
 
 ### Cara 1 — Claude.ai / Claude Desktop (berkas `.skill`)
 
@@ -179,7 +179,7 @@ rsync -a --exclude='.git' --exclude='.DS_Store' /tmp/arsitektur-pemdi-opd/ ~/.cl
 rm -rf /tmp/arsitektur-pemdi-opd
 ```
 
-Setelah langkah di atas, direktori `~/.claude/skills/pemdi-arsitektur-opd/` akan berisi `SKILL.md`, `CLAUDE.md`, `README.md`, `LICENSE`, seluruh sembilan berkas di `references/`, dan `assets/` (termasuk `banner-skill.png`).
+Setelah langkah di atas, direktori `~/.claude/skills/pemdi-arsitektur-opd/` akan berisi `SKILL.md`, `CLAUDE.md`, `README.md`, `LICENSE`, seluruh sembilan berkas di `references/`, dan `assets/` (termasuk `dosir-template.json`). Claude Code membaca frontmatter `name: pemdi-arsitektur-opd` pada `SKILL.md` untuk mendaftarkan skill ini secara otomatis pada sesi berikutnya — tidak perlu konfigurasi tambahan.
 
 Untuk memperbarui ke versi terbaru di kemudian hari, ulangi keempat langkah tersebut; isi direktori skill akan ditimpa dengan versi terbaru dari GitHub.
 
@@ -201,66 +201,53 @@ Untuk memperbarui ke versi terbaru di kemudian hari, ulangi keempat langkah ters
 
 **Menyimpan Dosir.** Di akhir setiap sesi, simpan berkas Dosir yang diberikan skill. Unggah kembali di sesi berikutnya agar riwayat pemetaan dan prediksi integrasi tetap terjaga.
 
-**Melengkapi penanda ISI.** Perhatikan tanda `[ISI: ...]` pada dokumen hasil. Tanda ini menunjukkan bagian yang membutuhkan data lapangan asli, misalnya nomor peraturan terbaru atau spesifikasi teknis aplikasi yang dipakai di OPD Anda.
+**Melengkapi penanda ISI.** Perhatikan tanda `[ISI: ...]` pada dokumen hasil. Tanda ini menunjukkan bagian yang membutuhkan data lapangan asli, misalnya nomor peraturan terbaru atau spesifikasi teknis. Lengkapi bagian tersebut sebelum dokumen difinalkan.
 
 ## Prinsip Desain
 
 Empat prinsip menjadi ciri khas skill ini.
 
-**Jujur di atas lengkap.** Skill lebih memilih menandai `[ISI: ...]` daripada mengisi dengan tebakan yang terdengar meyakinkan. Nilai enumerasi metadata yang tidak dapat diverifikasi dari sumber resmi tidak dimunculkan.
+**Jujur di atas lengkap.** Skill lebih memilih menandai `[ISI: ...]` daripada mengisi dengan tebakan yang terdengar meyakinkan. Nilai enumerasi metadata yang tidak dapat diverifikasi dari sumber resmi, misalnya, ditandai untuk dikonfirmasi ke portal, bukan dikarang.
 
-**Legitimasi legal didahulukan.** Untuk OPD Dinas, matriks urusan konkuren UU 23/2014 menjadi dasar utama, bukan pola generik dari pengalaman. Ketika keduanya berbeda, dasar legal menang, dan perbedaan dicatat sebagai temuan.
+**Legitimasi legal didahulukan.** Untuk OPD Dinas, matriks urusan konkuren UU 23/2014 menjadi dasar utama, bukan pola generik dari pengalaman. Ketika keduanya berbeda, dasar legal menang, dan perbedaannya dicatat sebagai temuan.
 
-**Batasi digitalisasi.** Skill tidak mengasumsikan semua hal harus didigitalkan. Untuk data sensitif seperti data intelijen, kewaspadaan dini, atau audit investigatif, skill merekomendasikan pembatasan atau pengelolaan offline.
+**Batasi digitalisasi.** Skill tidak mengasumsikan semua hal harus didigitalkan. Untuk data sensitif seperti data intelijen, kewaspadaan dini, atau audit investigatif, skill merekomendasikan pembatasan akses, bukan perluasan.
 
-**Transparansi koreksi.** Ketika terjadi kesalahan atau pemahaman berkembang, koreksi dicatat secara eksplisit, bukan dihapus diam-diam. Riwayat koreksi justru dipertahankan untuk membangun kepercayaan dan pembelajaran institusional.
+**Transparansi koreksi.** Ketika terjadi kesalahan atau pemahaman berkembang, koreksi dicatat secara eksplisit, bukan dihapus diam-diam. Riwayat koreksi justru dipertahankan untuk membangun kepercayaan.
 
 ## Dasar Regulasi
 
 - **UU 23/2014** tentang Pemerintahan Daerah (32 urusan konkuren).
 - **Perpres 95/2018** tentang SPBE.
-- **Perpres 132/2022** tentang Arsitektur SPBE Nasional (kerangka 6 domain, Referensi Arsitektur Proses Bisnis).
-- **Permenpan 19/2018** tentang penyusunan proses bisnis pemerintahan.
+- **Perpres 132/2022** tentang Arsitektur SPBE Nasional (kerangka 6 domain, Referensi Arsitektur).
+- **Permenpan 19/2018** tentang penyusunan proses bisnis.
 - **Permenpan 8/2026** tentang Indeks Pemdi (kerangka evaluasi kematangan).
 - **PP 18/2016** tentang Perangkat Daerah (klasifikasi tipe OPD).
 - **Manual dan Pedoman Teknis SIA-SPBE** (portal `arsitektur.spbe.go.id`) sebagai acuan metadata per domain.
 
 ## Riwayat Versi
 
-- **v1.3.0** — Mode PERENCANAAN: penyusunan arsitektur To-be dan Katalog Gap dengan disiplin tiga kategori (gap teramati, rujukan normatif, keputusan kebijakan) dan kaidah usulan bertanda `[USULAN CLAUDE, belum dikonfirmasi: ...]`.
+- **v1.4.0** — Output dokumen formal: generator `render_pemdi_docx.js` merender markdown enam domain menjadi Word resmi (sampul, kata pengantar, daftar isi bernomor akurat dua-lintasan, nomor halaman, tabel berformat, penanda `[ISI:]` merah), dengan `template-gaya-dokumen.md` sebagai kontrak gaya. Markdown tetap sumber kebenaran, docx artefak turunan. Menutup celah konsistensi format antar dokumen OPD.
+- **v1.3.0** — Mode PERENCANAAN: penyusunan arsitektur To-be dan Katalog Gap dengan disiplin tiga kategori (gap teramati, rujukan normatif, keputusan kebijakan) dan kaidah usulan bertanda.
 - **v1.2.2** — Crosswalk 32 urusan konkuren ke kode RAB Perpres 132/2022, dan pelengkapan kode urusan dua-bagian pada tabel RAB.
-- **v1.2.1** — Verifikasi metadata dari PDF resmi bergambar: infrastruktur dilengkapi menjadi 12 objek, disertai koreksi anti-fabrikasi atas nilai enumerasi yang sempat tercatat tanpa sumber resmi.
+- **v1.2.1** — Verifikasi metadata dari PDF resmi bergambar: infrastruktur dilengkapi menjadi 12 objek, disertai koreksi anti-fabrikasi atas nilai enumerasi yang sempat tercatat tanpa sumber.
 - **v1.2** — Keselarasan output dengan metadata resmi SIA-SPBE per domain.
 - **v1.1** — Sepuluh perbaikan pasca-review, termasuk penambahan jalur OPD non-Dinas dan penegasan mekanisme Dosir unggah-ulang.
 - **v1.0** — Versi awal: tiga mode, matriks 32 urusan, metodologi proses bisnis, kerangka enam domain.
 
 ## Keterbatasan yang Diketahui
 
-- **Peta Strategi dan Peta Rencana penuh belum tersedia.** Mode PERENCANAAN sudah menghasilkan To-be dan Katalog Gap, tetapi penyusunan Peta Strategi (Visi/Misi/Sasaran/IKU) dan Peta Rencana penuh ada di roadmap versi mendatang.
+- **Peta Strategi dan Peta Rencana penuh belum tersedia.** Mode PERENCANAAN sudah menghasilkan To-be dan Katalog Gap, tetapi penyusunan Peta Strategi (Visi/Misi/Sasaran/IKU) dan Peta Rencana penuh adalah lingkup berikutnya.
 - **Nilai enumerasi metadata belum lengkap.** Nama field metadata resmi sudah lengkap untuk semua domain, tetapi daftar nilai pilihannya sebagian masih perlu diverifikasi langsung di portal SIA-SPBE.
-- **Delapan urusan pada crosswalk perlu konfirmasi portal.** Trantibumlinmas, Pangan, Pemberdayaan Masyarakat dan Desa, Keluarga Berencana, Statistik, Persandian, Perpustakaan, dan Kearsipan tidak memiliki rekam portal SIA-SPBE resmi per 2026.
-- **Persistensi Dosir bergantung pada pengguna.** Kesinambungan antar-sesi mengandalkan pengguna menyimpan dan mengunggah ulang Dosir; tidak ada penyimpanan server otomatis.
+- **Delapan urusan pada crosswalk perlu konfirmasi portal.** Trantibumlinmas, Pangan, Pemberdayaan Masyarakat dan Desa, Keluarga Berencana, Statistik, Persandian, Perpustakaan, dan Kearsipan tidak memiliki padanan langsung pada kode RAB nasional, sehingga diberi kandidat terdekat yang wajib dikonfirmasi.
+- **Persistensi Dosir bergantung pada pengguna.** Kesinambungan antar-sesi mengandalkan pengguna menyimpan dan mengunggah ulang Dosir.
 
 ## Lisensi
 
-Dirilis di bawah **Lisensi MIT**. Anda bebas menggunakan, menyalin, memodifikasi, dan mendistribusikan skill ini, termasuk untuk keperluan komersial, dengan tetap menyertakan pemberitahuan hak cipta dan lisensi.
-
-Lihat berkas `LICENSE` untuk teks lengkap.
-
-## Kontak
-
-**Penyusun:** Syamsuddin, S.Pd, MM, GCIO  
-**Email:** syamsuddin.ideris@gmail.com  
-**Lokasi:** Pemkab Hulu Sungai Selatan, Provinsi Kalimantan Selatan, Indonesia 71271
-
-Untuk pertanyaan teknis, saran perbaikan, atau laporan bug, hubungi melalui email di atas atau buka issue di repositori GitHub ini.
+Dirilis di bawah **Lisensi MIT**. Anda bebas menggunakan, menyalin, memodifikasi, dan mendistribusikan skill ini, termasuk untuk keperluan komersial, dengan tetap menyertakan pemberitahuan hak cipta dan lisensi. Teks lengkap lisensi tersedia pada berkas `LICENSE`.
 
 ## Atribusi
 
 Dikembangkan oleh Syamsuddin melalui PT Nusa Smart Teknologi (NUSTEK), Kandangan, Hulu Sungai Selatan, Kalimantan Selatan.
 
-Skill ini bersifat universal dan tidak memuat data spesifik satu Pemda pada berkas referensinya. Contoh yang muncul dalam pengembangan bersifat ilustratif dan tetap memerlukan verifikasi lapangan sebelum digunakan sebagai dasar keputusan.
-
----
-
-**Terima kasih telah menggunakan skill ini. Semoga mempercepat dan meningkatkan kualitas penyusunan Arsitektur SPBE/Pemdi di daerah Anda.**
+Skill ini bersifat universal dan tidak memuat data spesifik satu Pemda pada berkas referensinya. Contoh yang muncul dalam pengembangan bersifat ilustratif dan tetap memerlukan verifikasi lapangan sebelum digunakan pada dokumen resmi.
