@@ -1,0 +1,8 @@
+# Artefak build (paket skill dibangun ulang dari sumber, tidak dilacak)
+*.skill
+
+# OS
+.DS_Store
+
+# Dependensi Node lokal untuk uji render (bukan bagian skill)
+node_modules/

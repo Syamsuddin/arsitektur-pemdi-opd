@@ -9,7 +9,7 @@ Selaras dengan dasar hukum terbaru — UU 23/2014 (Pemerintahan Daerah), Perpres
 [![Made for Claude](https://img.shields.io/badge/Made%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.ai)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-8A63D2?logo=anthropic&logoColor=white)](https://claude.ai)
 ![Version](https://img.shields.io/badge/version-1.3.0-blue)
-![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![SPBE / Pemdi](https://img.shields.io/badge/SPBE-Pemdi-0A66C2)
 ![Pemerintah Daerah](https://img.shields.io/badge/Pemerintah-Daerah-critical)
 ![Bahasa](https://img.shields.io/badge/lang-Indonesia-red)
@@ -244,7 +244,9 @@ Empat prinsip menjadi ciri khas skill ini.
 
 ## Lisensi
 
-Dirilis di bawah **Lisensi MIT**. Anda bebas menggunakan, menyalin, memodifikasi, dan mendistribusikan skill ini, termasuk untuk keperluan komersial, dengan tetap menyertakan pemberitahuan hak cipta dan lisensi. Teks lengkap lisensi tersedia pada berkas `LICENSE`.
+Copyright (C) 2026 Syamsuddin Ideris.
+
+Dirilis di bawah **GNU General Public License v3.0 (GPL-3.0)**. Anda bebas menggunakan, menyalin, mempelajari, memodifikasi, dan mendistribusikan skill ini, termasuk untuk keperluan komersial. Sebagai lisensi copyleft, setiap karya turunan atau versi modifikasi yang Anda distribusikan wajib pula dirilis di bawah GPL-3.0 dan menyertakan kode/berkas sumbernya, dengan tetap mempertahankan pemberitahuan hak cipta dan lisensi ini. Skill ini didistribusikan tanpa jaminan apa pun. Teks lengkap lisensi tersedia pada berkas `LICENSE`.
 
 ## Atribusi
 
